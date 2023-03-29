@@ -23,7 +23,8 @@ export function Home() {
   return (
     <>
       <h1>E-com for å handle</h1>
-      <Search />
+      <Search items={items} />
+      <ListGroup></ListGroup>
       <Row xs={1} md={2} lg={3} xl={4} className="g-3">
         {items.map((item) => (
           <Col key={item.key}>

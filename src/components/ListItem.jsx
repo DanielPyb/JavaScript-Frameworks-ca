@@ -39,9 +39,9 @@ export function ListItem({
         </Card.Title>
       </Card.Body>
       <Card.Footer variant="bottom">
-        <div className="d-flex">
+        <div>
           <Link to={`/product/${id}`}>
-            <Button>View Product</Button>
+            <Button className="w-100">View Product</Button>
           </Link>
         </div>
       </Card.Footer>
