@@ -1,5 +1,3 @@
-export function CheckoutSuccess(){
-    return(
-        <div>CheckoutSuccess</div>
-    )
+export function CheckoutSuccess() {
+  return <div>CheckoutSuccess</div>;
 }
