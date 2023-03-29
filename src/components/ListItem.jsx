@@ -2,6 +2,7 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { currencyFormatter } from "../utilities/currencyFormatter";
 
+// card component for the Home page, every item from the api is rendered with this
 export function ListItem({
   id,
   discountedPrice,

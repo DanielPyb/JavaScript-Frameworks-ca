@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import { baseURL } from "../utilities/BaseURL";
 import { currencyFormatter } from "../utilities/currencyFormatter";
 
+// based off of listItem, this function gets the one API item and renders it out.
 export function ProductInfo() {
   const [item, setItem] = useState(undefined);
   const { id } = useParams();
 
+  // decides if it will be an add to cart button, or if there should be more choices
   const cartQuantity = 1;
 
   useEffect(() => {
