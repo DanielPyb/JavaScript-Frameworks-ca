@@ -1,5 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import { currencyFormatter } from "../utilities/currencyFormatter";
 
 // card component for the Home page, every item from the api is rendered with this

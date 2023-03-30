@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import { baseURL } from "../utilities/BaseURL";
 import { currencyFormatter } from "../utilities/currencyFormatter";
 
@@ -10,14 +11,21 @@ export function ProductInfo() {
   const { id } = useParams();
 
   // decides if it will be an add to cart button, or if there should be more choices
-  const cartQuantity = 1;
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeCart,
+  } = useShoppingCart();
+
+  const cartQuantity = getItemQuantity(id);
 
   useEffect(() => {
     fetch(baseURL + "/" + id)
       .then((res) => res.json())
       .then((result) => setItem(result));
   }, []);
-
+  console.log(cartQuantity);
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto" }}>
       {item ? (
@@ -54,7 +62,12 @@ export function ProductInfo() {
           </Card.Body>
           <Card.Footer variant="bottom">
             {cartQuantity === 0 ? (
-              <Button className="w-100">Add to cart</Button>
+              <Button
+                className="w-100"
+                onClick={() => increaseCartQuantity(id)}
+              >
+                Add to cart
+              </Button>
             ) : (
               <div
                 className="d-flex align-items-center flex-column"
@@ -64,13 +77,17 @@ export function ProductInfo() {
                   className="d-flex align-items-center justify-content-center"
                   style={{ gap: ".5rem" }}
                 >
-                  <Button>-</Button>
+                  <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
                   <div>
                     <span className="fs-3">{cartQuantity}</span> in cart
                   </div>
-                  <Button>+</Button>
+                  <Button onClick={() => increaseCartQuantity(id)}>+</Button>
                 </div>
-                <Button variant="danger" size="sm">
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => removeCart(id)}
+                >
                   Remove
                 </Button>
               </div>

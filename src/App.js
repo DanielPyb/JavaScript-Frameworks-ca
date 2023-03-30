@@ -6,20 +6,23 @@ import { Checkout } from "./pages/Checkout";
 import { Home } from "./pages/Home";
 import { CheckoutSuccess } from "./pages/CheckoutSuccess";
 import { Product } from "./pages/Product";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Container className="mb-4">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/checkoutSucess" element={<CheckoutSuccess />} />
-          <Route path="/product/:id" element={<Product />} />
-        </Routes>
-      </Container>
+      <ShoppingCartProvider>
+        <Navbar />
+        <Container className="mb-4">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkoutSucess" element={<CheckoutSuccess />} />
+            <Route path="/product/:id" element={<Product />} />
+          </Routes>
+        </Container>
+      </ShoppingCartProvider>
     </>
   );
 }
