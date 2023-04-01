@@ -1,18 +1,19 @@
 import { Container, Nav } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
-import { Navbar } from "./components/Navbar";
 import { Contact } from "./pages/Contact";
 import { Checkout } from "./pages/Checkout";
 import { Home } from "./pages/Home";
 import { CheckoutSuccess } from "./pages/CheckoutSuccess";
 import { Product } from "./pages/Product";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
 
 function App() {
   return (
     <>
       <ShoppingCartProvider>
-        <Navbar />
+        <Header />
         <Container className="mb-4">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -22,6 +23,7 @@ function App() {
             <Route path="/product/:id" element={<Product />} />
           </Routes>
         </Container>
+        <Footer />
       </ShoppingCartProvider>
     </>
   );
