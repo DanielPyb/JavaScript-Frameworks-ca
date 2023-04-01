@@ -1,36 +1,88 @@
+import { useState } from "react";
 import { Button, Form, FormGroup, InputGroup, Row } from "react-bootstrap";
 
 export function Contact() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [emailBody, setEmailBody] = useState("");
+
+  function onFormSubmit(e) {
+    e.preventDefault();
+    if (
+      fullName.length >= 3 &&
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) &&
+      emailBody.length >= 3 &&
+      subject.length >= 3
+    ) {
+      const body = {
+        fullName: fullName,
+        email: email,
+        subject: subject,
+        body: emailBody,
+      };
+      console.log(body);
+    } else {
+      console.log("not correctly inputed");
+    }
+  }
+
+  function onNameChange(e) {
+    setFullName(e.target.value);
+  }
+  function onEmailChange(e) {
+    setEmail(e.target.value);
+  }
+
+  function onEmailBodyChange(e) {
+    setEmailBody(e.target.value);
+  }
+
+  function onSubjectChange(e) {
+    setSubject(e.target.value);
+  }
+
   return (
-    <FormGroup className="mt-5d-flex justify-content-center align-items-center">
-      <Form className="rounded bg-white shadow-sm p-5">
-        <Form.Group className="mb-3" controlId="formFullname">
-          <Form.Label>Full Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter full name" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formSubject">
-          <Form.Label>What is the subject of your email?</Form.Label>
-          <Form.Control type="text" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formEmail">
-          <Form.Label>E-mail</Form.Label>
-          <Form.Control type="email" placeholder="Enter Email" />
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label>Contents</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows="5"
-            placeholder="enter body of the email here"
-          />
-        </Form.Group>
-        <Form.Group className="mt-4 d-flex justify-content-center align-items-center">
-          <Button>Submit</Button>
-        </Form.Group>
-      </Form>
-    </FormGroup>
+    <div>
+      <form onSubmit={onFormSubmit}>
+        <FormGroup>
+          <label htmlFor="full-name">Full name</label>
+          <input
+            name="full-name"
+            value={fullName}
+            placeholder="Your full name"
+            onChange={onNameChange}
+          ></input>
+        </FormGroup>
+        <FormGroup>
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            value={email}
+            placeholder="Your email that you want to be contacted on"
+            onChange={onEmailChange}
+          ></input>
+        </FormGroup>
+        <FormGroup>
+          <label htmlFor="subject">subject</label>
+          <input
+            name="subject"
+            value={subject}
+            placeholder="What is the subject of your email?"
+            onChange={onSubjectChange}
+          ></input>
+        </FormGroup>
+        <FormGroup>
+          <label htmlFor="email-body">Message</label>
+          <input
+            name="email-body"
+            value={emailBody}
+            placeholder="What you wish to tell us"
+            onChange={onEmailBodyChange}
+          ></input>
+        </FormGroup>
+        <button>Submit</button>
+      </form>
+    </div>
   );
 }
