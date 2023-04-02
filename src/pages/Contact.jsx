@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, FormGroup, InputGroup, Row } from "react-bootstrap";
+import { Button, FormGroup } from "react-bootstrap";
 
 export function Contact() {
   const [fullName, setFullName] = useState("");
@@ -43,45 +43,58 @@ export function Contact() {
   }
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={onFormSubmit}>
         <FormGroup>
-          <label htmlFor="full-name">Full name</label>
+          <label htmlFor="full-name" className="d-block w-100">
+            Full name
+          </label>
           <input
             name="full-name"
             value={fullName}
             placeholder="Your full name"
+            className="d-block w-100"
             onChange={onNameChange}
           ></input>
         </FormGroup>
         <FormGroup>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="d-block w-100">
+            Email
+          </label>
           <input
             name="email"
             value={email}
             placeholder="Your email that you want to be contacted on"
+            className="d-block w-100"
             onChange={onEmailChange}
           ></input>
         </FormGroup>
         <FormGroup>
-          <label htmlFor="subject">subject</label>
+          <label htmlFor="subject" className="d-block w-100">
+            subject
+          </label>
           <input
             name="subject"
             value={subject}
             placeholder="What is the subject of your email?"
+            className="d-block w-100"
             onChange={onSubjectChange}
           ></input>
         </FormGroup>
         <FormGroup>
-          <label htmlFor="email-body">Message</label>
-          <input
+          <label htmlFor="email-body" className="d-block w-100">
+            Message
+          </label>
+          <textarea
             name="email-body"
+            rows={5}
             value={emailBody}
             placeholder="What you wish to tell us"
+            className="d-block w-100"
             onChange={onEmailBodyChange}
-          ></input>
+          ></textarea>
         </FormGroup>
-        <Button>Submit</Button>
+        <Button className="mt-5">Submit</Button>
       </form>
     </div>
   );

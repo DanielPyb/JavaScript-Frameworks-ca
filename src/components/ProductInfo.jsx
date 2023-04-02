@@ -78,17 +78,17 @@ export function ProductInfo() {
                   className="d-flex align-items-center justify-content-center"
                   style={{ gap: ".5rem" }}
                 >
-                  <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
+                  <Button size="sm" onClick={() => decreaseCartQuantity(id)}>
+                    -
+                  </Button>
                   <div>
                     <span className="fs-3">{cartQuantity}</span> in cart
                   </div>
-                  <Button onClick={() => increaseCartQuantity(id)}>+</Button>
+                  <Button size="sm" onClick={() => increaseCartQuantity(id)}>
+                    +
+                  </Button>
                 </div>
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => removeCart(id)}
-                >
+                <Button variant="dark" size="sm" onClick={() => removeCart(id)}>
                   Remove
                 </Button>
               </div>

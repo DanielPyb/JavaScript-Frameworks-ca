@@ -17,15 +17,26 @@ export function CartItem({ id, quantity }) {
 
   return (
     <ListGroupItem>
-      <img src={item.imgUrl} style={{ width: "300px", objectFit: "cover" }} />
+      <img
+        src={item.imageUrl}
+        style={{ width: "300px", height: "200px", objectFit: "cover" }}
+      />
       <div class="me-auto">
         <div>
           {item.title} x{quantity}
         </div>
-        <div>{currencyFormatter(item.discountedPrice)}</div>
+        <div className="text-muted">
+          {currencyFormatter(item.discountedPrice)}
+        </div>
       </div>
       <div>{currencyFormatter(item.discountedPrice * quantity)}</div>
-      <Button onClick={() => removeCart(item.id)}>x</Button>
+      <Button
+        onClick={() => removeCart(item.id)}
+        variant="dark"
+        className="w-100"
+      >
+        x
+      </Button>
     </ListGroupItem>
   );
 }
