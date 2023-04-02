@@ -81,7 +81,7 @@ export function Contact() {
             onChange={onEmailBodyChange}
           ></input>
         </FormGroup>
-        <button>Submit</button>
+        <Button>Submit</Button>
       </form>
     </div>
   );

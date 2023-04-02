@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { baseURL } from "../utilities/BaseURL";
@@ -25,7 +25,7 @@ export function ProductInfo() {
       .then((res) => res.json())
       .then((result) => setItem(result));
   }, []);
-  console.log(cartQuantity);
+
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto" }}>
       {item ? (
@@ -59,6 +59,7 @@ export function ProductInfo() {
                 )}
               </div>
             </Card.Title>
+            <p>{item.description}</p>
           </Card.Body>
           <Card.Footer variant="bottom">
             {cartQuantity === 0 ? (
